@@ -1,0 +1,1 @@
+# simpleAutoclicker
