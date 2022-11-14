@@ -4,7 +4,7 @@ from pynput.mouse import Button,Controller
 from pynput.keyboard import Listener,KeyCode
 
 keyBind=KeyCode(char=input("Keybind > "))
-delay=(1/(float(input("Clicks Per Second > "))))
+delay=(1/(int(input("Clicks Per Second > "))))
 
 mouse=Controller()
 def toggle(key):
