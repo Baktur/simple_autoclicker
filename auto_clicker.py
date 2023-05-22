@@ -1,24 +1,27 @@
 import time
 import threading
-from pynput.mouse import Button,Controller
-from pynput.keyboard import Listener,KeyCode
+from pynput.mouse import Button, Controller
+from pynput.keyboard import Listener, KeyCode
 
-keyBind=KeyCode(char=input("Keybind > "))
-delay=(1/(int(input("Clicks Per Second > "))))
+key_bind = KeyCode(char=input("Keybind > "))
+delay = 1 / int(input("Clicks Per Second > "))
 
-mouse=Controller()
+mouse = Controller()
+
 def toggle(key):
-    if key==keyBind:
+    if key == key_bind:
         global run
-        run=not run
-def autoClicker():
+        run = not run
+
+def auto_clicker():
     while True:
         if run:
-            mouse.click(Button.left,1)
+            mouse.click(Button.left, 1)
         time.sleep(delay)
 
-run=False
-autoClickThread=threading.Thread(target=autoClicker)
-autoClickThread.start()
+run = False
+auto_click_thread = threading.Thread(target=auto_clicker)
+auto_click_thread.start()
+
 with Listener(on_press=toggle) as listener:
     listener.join()
